@@ -1,8 +1,10 @@
 package com.petite.friends
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
 import android.widget.RemoteViews
 import es.antonborri.home_widget.HomeWidgetPlugin
 
@@ -55,11 +57,15 @@ class PetiteWidgetProvider : AppWidgetProvider() {
                 }
                 setTextViewText(R.id.widget_status_message, statusMessage)
 
-                // Set click listeners
-                val pendingIntent = HomeWidgetPlugin.getPendingIntentForUpdateWidget(
+                // Set click listeners - open app when widget is clicked
+                val intent = Intent(context, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                }
+                val pendingIntent = PendingIntent.getActivity(
                     context,
-                    PetiteWidgetProvider::class.java,
-                    "open_app"
+                    0,
+                    intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
                 )
                 setOnClickPendingIntent(R.id.widget_container, pendingIntent)
             }
