@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:workmanager/workmanager.dart';
@@ -38,29 +39,32 @@ void main() async {
   // await NotificationService().initialize();
   // await NotificationService().scheduleAllReminders();
 
-  // Initialize ad service
-  await AdService().initialize();
-  await AdService().loadRewardedAd();
+  // Platform-specific initialization (not for web)
+  if (!kIsWeb) {
+    // Initialize ad service
+    await AdService().initialize();
+    await AdService().loadRewardedAd();
 
-  // Initialize widget service
-  await WidgetService().initialize();
-  WidgetService.registerBackgroundCallback();
+    // Initialize widget service
+    await WidgetService().initialize();
+    WidgetService.registerBackgroundCallback();
 
-  // Initialize WorkManager for background widget updates
-  await Workmanager().initialize(
-    callbackDispatcher,
-    isInDebugMode: false,
-  );
+    // Initialize WorkManager for background widget updates
+    await Workmanager().initialize(
+      callbackDispatcher,
+      isInDebugMode: false,
+    );
 
-  // Register periodic task for widget updates (every 30 minutes)
-  await Workmanager().registerPeriodicTask(
-    'widget_update',
-    'widgetUpdateTask',
-    frequency: const Duration(minutes: 30),
-    constraints: Constraints(
-      networkType: NetworkType.not_required,
-    ),
-  );
+    // Register periodic task for widget updates (every 30 minutes)
+    await Workmanager().registerPeriodicTask(
+      'widget_update',
+      'widgetUpdateTask',
+      frequency: const Duration(minutes: 30),
+      constraints: Constraints(
+        networkType: NetworkType.not_required,
+      ),
+    );
+  }
 
   runApp(
     ProviderScope(
