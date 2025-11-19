@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd petite_friends && flutter/bin/flutter build web",
+  "devCommand": "cd petite_friends && flutter/bin/flutter run -d web-server --web-port=3000",
+  "installCommand": "if [ ! -d flutter ]; then git clone https://github.com/flutter/flutter.git -b stable --depth 1; fi && flutter/bin/flutter config --enable-web && cd petite_friends && ../flutter/bin/flutter pub get",
+  "framework": null,
+  "outputDirectory": "petite_friends/build/web"
+}

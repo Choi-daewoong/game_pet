@@ -1,15 +1,10 @@
-name: Deploy to GitHub Pages
+name: Build Web Preview
 
 on:
   push:
     branches:
       - claude/review-pet-widget-game-01UBJTbD56z2133PKiS9vMt7
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 jobs:
   build:
@@ -31,16 +26,11 @@ jobs:
 
       - name: Build Web
         working-directory: ./petite_friends
-        run: flutter build web --release --base-href "/game_pet/"
+        run: flutter build web --release
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload Web Build
+        uses: actions/upload-artifact@v4
         with:
-          path: 'petite_friends/build/web'
+          name: web-build
+          path: petite_friends/build/web
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
