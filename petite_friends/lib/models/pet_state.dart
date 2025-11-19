@@ -1,43 +1,15 @@
-import 'package:hive/hive.dart';
-
-part 'pet_state.g.dart';
-
-@HiveType(typeId: 0)
 class PetState {
-  @HiveField(0)
   String name;
-
-  @HiveField(1)
   double hunger; // 0-100
-
-  @HiveField(2)
   double cleanliness; // 0-100
-
-  @HiveField(3)
   double mood; // 0-100
-
-  @HiveField(4)
   double fatigue; // 0-100
-
-  @HiveField(5)
   double health; // 0-100
-
-  @HiveField(6)
   DateTime lastUpdateTime;
-
-  @HiveField(7)
   bool isSleeping;
-
-  @HiveField(8)
   DateTime? sleepStartTime;
-
-  @HiveField(9)
   String? illness; // null or 'stomach_ache', 'skin_disease', 'weak_immunity'
-
-  @HiveField(10)
   int level;
-
-  @HiveField(11)
   int experience;
 
   PetState({

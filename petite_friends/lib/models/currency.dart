@@ -1,28 +1,10 @@
-import 'package:hive/hive.dart';
-
-part 'currency.g.dart';
-
-@HiveType(typeId: 1)
 class Currency {
-  @HiveField(0)
   int hearts; // 게임 기회
-
-  @HiveField(1)
   int coins; // 아이템 구매용
-
-  @HiveField(2)
   int affectionPoints; // 교감 포인트
-
-  @HiveField(3)
   DateTime lastHeartRecoveryTime;
-
-  @HiveField(4)
   DateTime installDate;
-
-  @HiveField(5)
   int friendHeartRequestsToday;
-
-  @HiveField(6)
   DateTime lastFriendRequestDate;
 
   Currency({

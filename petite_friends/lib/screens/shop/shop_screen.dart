@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/pet_provider.dart';
 import '../../providers/currency_provider.dart';
+import '../../models/currency.dart';
 
 class ShopScreen extends ConsumerWidget {
   const ShopScreen({super.key});
