@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/widget_background">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/widget_pet_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="펫"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333333" />
+
+        <TextView
+            android:id="@+id/widget_pet_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lv.1"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:background="@drawable/widget_badge" />
+    </LinearLayout>
+
+    <!-- Pet Display -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/widget_pet_emoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🐱"
+            android:textSize="64sp" />
+
+        <TextView
+            android:id="@+id/widget_status_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="건강해요! ✨"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <!-- Status Bars -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="8dp">
+
+        <!-- Hunger Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="배고픔"
+                android:textSize="12sp"
+                android:textColor="#666666" />
+
+            <ProgressBar
+                android:id="@+id/widget_hunger_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:layout_weight="1"
+                android:progressTint="#FF6B6B"
+                android:progressBackgroundTint="#EEEEEE"
+                android:max="100"
+                android:progress="100" />
+        </LinearLayout>
+
+        <!-- Mood Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="기분"
+                android:textSize="12sp"
+                android:textColor="#666666" />
+
+            <ProgressBar
+                android:id="@+id/widget_mood_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:layout_weight="1"
+                android:progressTint="#FFD93D"
+                android:progressBackgroundTint="#EEEEEE"
+                android:max="100"
+                android:progress="100" />
+        </LinearLayout>
+
+        <!-- Health Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="건강"
+                android:textSize="12sp"
+                android:textColor="#666666" />
+
+            <ProgressBar
+                android:id="@+id/widget_health_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:layout_weight="1"
+                android:progressTint="#6BCB77"
+                android:progressBackgroundTint="#EEEEEE"
+                android:max="100"
+                android:progress="100" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Currency Display -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/widget_hearts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💙 0"
+            android:textSize="12sp"
+            android:textColor="#666666"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:id="@+id/widget_coins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🪙 0"
+            android:textSize="12sp"
+            android:textColor="#666666" />
+    </LinearLayout>
+</LinearLayout>
