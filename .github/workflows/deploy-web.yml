@@ -28,9 +28,10 @@ jobs:
         working-directory: ./petite_friends
         run: flutter build web --release
 
-      - name: Upload Web Build
-        uses: actions/upload-artifact@v4
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: web-build
-          path: petite_friends/build/web
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: petite_friends/build/web
+          cname: false
 
