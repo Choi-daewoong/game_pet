@@ -41,7 +41,7 @@ class ShopScreen extends ConsumerWidget {
                 description: '배고픔 +20, 기분 +5',
                 coinPrice: 5,
                 currency: currency,
-                onPurchase: () => _purchaseFood(ref, 'apple', 20, 5, 5),
+                onPurchase: () => _purchaseFood(context, ref, 'apple', 20, 5, 5),
               ),
               const SizedBox(height: 12),
               _buildShopItem(
@@ -52,7 +52,7 @@ class ShopScreen extends ConsumerWidget {
                 description: '배고픔 +40, 기분 +10',
                 coinPrice: 10,
                 currency: currency,
-                onPurchase: () => _purchaseFood(ref, 'pizza', 40, 10, 10),
+                onPurchase: () => _purchaseFood(context, ref, 'pizza', 40, 10, 10),
               ),
               const SizedBox(height: 12),
               _buildShopItem(
@@ -63,7 +63,7 @@ class ShopScreen extends ConsumerWidget {
                 description: '배고픔 +60, 기분 +20',
                 coinPrice: 20,
                 currency: currency,
-                onPurchase: () => _purchaseFood(ref, 'cake', 60, 20, 20),
+                onPurchase: () => _purchaseFood(context, ref, 'cake', 60, 20, 20),
               ),
               const SizedBox(height: 32),
 
@@ -83,7 +83,7 @@ class ShopScreen extends ConsumerWidget {
                 description: '청결도 +15, 기분 +5',
                 coinPrice: 8,
                 currency: currency,
-                onPurchase: () => _purchaseCleaning(ref, 'broom', 15, 5, 8),
+                onPurchase: () => _purchaseCleaning(context, ref, 'broom', 15, 5, 8),
               ),
               const SizedBox(height: 12),
               _buildShopItem(
@@ -94,7 +94,7 @@ class ShopScreen extends ConsumerWidget {
                 description: '청결도 +25, 기분 +8',
                 coinPrice: 12,
                 currency: currency,
-                onPurchase: () => _purchaseCleaning(ref, 'soap', 25, 8, 12),
+                onPurchase: () => _purchaseCleaning(context, ref, 'soap', 25, 8, 12),
               ),
               const SizedBox(height: 12),
               _buildShopItem(
@@ -105,7 +105,7 @@ class ShopScreen extends ConsumerWidget {
                 description: '청결도 +50, 기분 +15',
                 coinPrice: 25,
                 currency: currency,
-                onPurchase: () => _purchaseCleaning(ref, 'bath', 50, 15, 25),
+                onPurchase: () => _purchaseCleaning(context, ref, 'bath', 50, 15, 25),
               ),
               const SizedBox(height: 32),
 
@@ -125,7 +125,7 @@ class ShopScreen extends ConsumerWidget {
                 description: '게임을 더 즐기세요',
                 coinPrice: 10,
                 currency: currency,
-                onPurchase: () => _purchaseHearts(ref, 5, 10),
+                onPurchase: () => _purchaseHearts(context, ref, 5, 10),
               ),
               const SizedBox(height: 12),
               _buildShopItem(
@@ -136,7 +136,7 @@ class ShopScreen extends ConsumerWidget {
                 description: '더 많은 게임 플레이!',
                 coinPrice: 18,
                 currency: currency,
-                onPurchase: () => _purchaseHearts(ref, 10, 18),
+                onPurchase: () => _purchaseHearts(context, ref, 10, 18),
               ),
               const SizedBox(height: 32),
 
@@ -156,7 +156,7 @@ class ShopScreen extends ConsumerWidget {
                 description: '건강 +30, 면역력 강화',
                 coinPrice: 15,
                 currency: currency,
-                onPurchase: () => _purchaseVitamin(ref, 15),
+                onPurchase: () => _purchaseVitamin(context, ref, 15),
               ),
               const SizedBox(height: 12),
               _buildShopItem(
@@ -167,7 +167,7 @@ class ShopScreen extends ConsumerWidget {
                 description: '랜덤 보상 획득!',
                 coinPrice: 30,
                 currency: currency,
-                onPurchase: () => _purchaseLuckyBox(ref, context, 30),
+                onPurchase: () => _purchaseLuckyBox(context, ref, 30),
               ),
             ],
           ),
@@ -322,6 +322,7 @@ class ShopScreen extends ConsumerWidget {
   }
 
   void _purchaseFood(
+    BuildContext context,
     WidgetRef ref,
     String type,
     int hungerIncrease,
@@ -342,10 +343,11 @@ class ShopScreen extends ConsumerWidget {
       ref.read(petProvider.notifier).state = updatedPet;
     }
 
-    _showPurchaseSuccessDialog(ref.context, '맛있게 먹었어요! 🍴');
+    _showPurchaseSuccessDialog(context, '맛있게 먹었어요! 🍴');
   }
 
   void _purchaseCleaning(
+    BuildContext context,
     WidgetRef ref,
     String type,
     int cleanlinessIncrease,
@@ -366,10 +368,10 @@ class ShopScreen extends ConsumerWidget {
       ref.read(petProvider.notifier).state = updatedPet;
     }
 
-    _showPurchaseSuccessDialog(ref.context, '깨끗해졌어요! ✨');
+    _showPurchaseSuccessDialog(context, '깨끗해졌어요! ✨');
   }
 
-  void _purchaseHearts(WidgetRef ref, int amount, int cost) {
+  void _purchaseHearts(BuildContext context, WidgetRef ref, int amount, int cost) {
     if (!ref.read(currencyProvider.notifier).consumeCoins(cost)) {
       return;
     }
@@ -382,10 +384,10 @@ class ShopScreen extends ConsumerWidget {
       );
     }
 
-    _showPurchaseSuccessDialog(ref.context, '하트를 충전했어요! 💙');
+    _showPurchaseSuccessDialog(context, '하트를 충전했어요! 💙');
   }
 
-  void _purchaseVitamin(WidgetRef ref, int cost) {
+  void _purchaseVitamin(BuildContext context, WidgetRef ref, int cost) {
     if (!ref.read(currencyProvider.notifier).consumeCoins(cost)) {
       return;
     }
@@ -400,10 +402,10 @@ class ShopScreen extends ConsumerWidget {
       ref.read(petProvider.notifier).state = updatedPet;
     }
 
-    _showPurchaseSuccessDialog(ref.context, '건강해졌어요! 💪');
+    _showPurchaseSuccessDialog(context, '건강해졌어요! 💪');
   }
 
-  void _purchaseLuckyBox(WidgetRef ref, BuildContext context, int cost) {
+  void _purchaseLuckyBox(BuildContext context, WidgetRef ref, int cost) {
     if (!ref.read(currencyProvider.notifier).consumeCoins(cost)) {
       return;
     }

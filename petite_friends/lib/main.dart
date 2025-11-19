@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:workmanager/workmanager.dart';
 import 'services/storage_service.dart';
-import 'services/notification_service.dart';
+// import 'services/notification_service.dart'; // Temporarily disabled
 import 'services/ad_service.dart';
 import 'services/widget_service.dart';
 import 'providers/storage_provider.dart';
@@ -34,9 +34,9 @@ void main() async {
   // Initialize storage
   final storage = await StorageService.init();
 
-  // Initialize notification service
-  await NotificationService().initialize();
-  await NotificationService().scheduleAllReminders();
+  // Initialize notification service (temporarily disabled)
+  // await NotificationService().initialize();
+  // await NotificationService().scheduleAllReminders();
 
   // Initialize ad service
   await AdService().initialize();
